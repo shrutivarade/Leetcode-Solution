@@ -15,6 +15,7 @@ class Solution:
         # ans.append(word2[j:])
         # return ''.join(ans)
 
+
         # using string operations
         # i=0
         # j=0
@@ -32,7 +33,6 @@ class Solution:
         # return word3
 
         # Using min() and Slicing
-        
         n1 = len(word1)
         n2 = len(word2)
         result = ""
