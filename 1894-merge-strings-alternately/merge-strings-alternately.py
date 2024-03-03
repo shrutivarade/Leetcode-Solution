@@ -44,4 +44,4 @@ class Solution:
         # else:
         #     result = result + word1[n2:]
         
-        return result
+        # return result
