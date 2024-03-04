@@ -1,8 +1,8 @@
 class Solution {
     public boolean increasingTriplet(int[] nums) {
 
-        // 
-        int num1 = Integer.MAX_VALUE, num2 = Integer.MAX_VALUE;
+        // Greedy algorithms make decisions based on the current best option without considering future consequences.
+        int num1 = nums[0], num2 = Integer.MAX_VALUE;
         for(int n:nums){
             if(n <= num1){
                 num1 = n;
