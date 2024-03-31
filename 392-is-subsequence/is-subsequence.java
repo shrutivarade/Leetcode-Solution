@@ -1,52 +1,21 @@
 class Solution {
     public boolean isSubsequence(String s, String t) {
 
-            // String count = "";
-            // int j=0;
-
-            // for(int i=0; i<s.length(); i++){
-            //     while( j<t.length()){
-            //         if(s.charAt(i) == t.charAt(j)){
-            //             count = count + s.charAt(i);
-            //             j = j+1;
-            //             break;
-            //         }
-            //         j = j+1;
-            //     }
-            // }
-
-            // if(s.equals(count)){
-            //     return true;
-            // }
-            // else{
-            //     return false;
-            // }
-            
-            
-            int i=0, j=0;
-
-            while(i<s.length() && j<t.length()){
-
-                if(s.charAt(i) == t.charAt(j)){
-                    i++;
-                    j++;
-                }
-                else{
-                    j++;
-                }
+        // 1 loop and 2 pointers, 1 for each String
+        
+        int i,j;
+        for(i=0, j=0; i<s.length() && j<t.length(); j++){
+            if(s.charAt(i) == t.charAt(j)){
+                i++;
             }
+        }
 
-            if(i == s.length()){
-                return true;
-            }
-            // if(j == t.length()){
-            //     return false;
-            // }
-            else{
-                return false;
-            }
-
-
+        if(i == s.length()){
+            return true;
+        }
+        else{
+            return false;
+        }
 
     }
 }
