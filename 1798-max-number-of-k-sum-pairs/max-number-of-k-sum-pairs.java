@@ -51,7 +51,7 @@ class Solution {
 
         // int count = 0;
 
-        // for (int i =0; i<nums.length; i++){
+        // for (int i=0; i<nums.length; i++){
         //     if(nums[i] == -1 ) continue;
 
         //     for (int j = i+1; j<nums.length; j++){
