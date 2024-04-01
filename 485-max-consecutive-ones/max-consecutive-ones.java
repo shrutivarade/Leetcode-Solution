@@ -7,7 +7,7 @@ class Solution {
         for( int i=0; i<nums.length; i++){
             if(nums[i]==0){
                 count = 0;
-                max = Math.max(max,count);
+                // max = Math.max(max,count);
             }else{
                 count += 1;
             }
