@@ -4,13 +4,11 @@ public class Solution {
         int n = board[0].length;
 
         boolean[][] visited = new boolean[m][n];
-        boolean result = false;
         
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                if (board[i][j] == word.charAt(0)) {
-                    result = backtrack(board, word, visited, i, j, 0);
-                    if (result) return true;
+                if (board[i][j] == word.charAt(0) && backtrack(board, word, visited, i, j, 0)) {
+                    return true;
                 }
             }
         }
