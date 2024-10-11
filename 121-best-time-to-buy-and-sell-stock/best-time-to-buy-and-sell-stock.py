@@ -9,13 +9,23 @@ class Solution:
         # return profit
 
         # Optimal: O(n)
-        profit = 0 
-        buy = prices[0]
+        # profit = 0 
+        # buy = prices[0]
 
-        for sell in prices[1:]:
-            if sell > buy:
-                profit = max(profit,sell-buy)
-            else:
-                buy = sell
+        # for sell in prices[1:]:
+        #     if sell > buy:
+        #         profit = max(profit,sell-buy)
+        #     else:
+        #         buy = sell
 
+        # return profit
+
+
+        profit = 0
+        buyAt = prices[0]
+
+        for sellAt in prices:
+            buyAt = min(buyAt, sellAt)
+            if sellAt > buyAt:
+                profit = max(profit, sellAt-buyAt)
         return profit
