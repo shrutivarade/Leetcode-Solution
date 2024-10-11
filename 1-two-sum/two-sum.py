@@ -5,13 +5,19 @@ class Solution:
         :type target: int
         :rtype: List[int]
         """
-        
-        dict = {}
-
-        for i, num in enumerate(nums):
-            if target - num in dict:
-                return [dict[target - num], i]
-            dict[num] = i
-
+        # Brute force: O(n^2)
+        for i in range(0, len(nums)):
+            for j in range(i+1, len(nums)):
+                if target == nums[i]+nums[j]:
+                    return [i,j]
         return []
+
+        # Optimal: O(n)
+        # dict = {}
+        # for i in range(len(nums)):
+        #     if target - nums[i] in dict:
+        #         return [dict[target - nums[i]], i]
+        #     dict[nums[i]] = i
+
+        # return []
 
