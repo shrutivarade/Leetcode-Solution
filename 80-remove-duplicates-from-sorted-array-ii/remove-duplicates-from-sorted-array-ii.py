@@ -1,6 +1,7 @@
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-
+        # both the logic works
+        
         # i=0
         # j=0
 
