@@ -11,13 +11,13 @@ class Solution:
             return
 
         root = TreeNode(preorder.pop(0))
-        print(root)
+        # print(root)
 
         index = inorder.index(root.val)
-        print(index)
+        # print(index)
 
         root.left = self.buildTree(preorder,inorder[:index])
         root.right = self.buildTree(preorder,inorder[index+1:])
-        
+
         return root
         
