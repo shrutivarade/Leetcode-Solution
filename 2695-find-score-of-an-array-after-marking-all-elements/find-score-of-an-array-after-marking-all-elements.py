@@ -1,71 +1,89 @@
-# class Solution:
-#     def findScore(self, nums: List[int]) -> int:
-#         score = 0
-#         while nums:
-#             minVal = min(nums)
-#             idx = nums.index(minVal)
-#             score += nums[idx]
-
-#             if(nums.index(min(nums))>0 and nums.index(min(nums))<len(nums)-1):
-#                 nums.remove(nums[idx-1])
-#                 nums.remove(nums[idx-1])
-#                 nums.remove(nums[idx-1])
-#                 continue
-#             elif (nums.index(min(nums))>0 and not nums.index(min(nums))<len(nums)-1):
-#                 nums.remove(nums[idx-1])
-#                 nums.remove(nums[idx-1])
-#                 continue
-#             elif (not nums.index(min(nums))>0 and nums.index(min(nums))<len(nums)-1):
-#                 nums.remove(nums[idx+1])
-#                 nums.remove(nums[idx])
-#                 continue
-
-#             if(len(nums)==1):
-#                 nums.remove(nums[idx])
-#                 continue
-#             elif(len(nums)==2 and nums.index(min(nums))>0):
-#                 nums.remove(nums[idx-1])
-#                 nums.remove(nums[idx-1])
-#                 continue
-#             elif(len(nums)==2 and nums.index(min(nums))<len(nums)-1):
-#                 nums.remove(nums[idx+1])
-#                 nums.remove(nums[idx])
-#                 continue
-        
-
-            
-#         return score
-
-
-
 class Solution:
     def findScore(self, nums: List[int]) -> int:
         score = 0
-        n = len(nums)
-        q = deque()
 
-        # Traverse through the array
-        for i in range(n):
-            # If queue is not empty and the current number is greater than or equal to the last in queue
-            if q and nums[i] >= q[-1]:
-                skip = False
-                # Process the elements in the queue
-                while q:
-                    add = q.pop()
-                    if not skip:
-                        score += add
-                    skip = not skip
+        removed_indices = set()
+        # Create a priority queue with (value, index) tuples
+        pq = [(val, idx) for idx, val in enumerate(nums)]
+        heapq.heapify(pq)  # Transform into a min-heap
+
+        while pq:
+            # Extract the minimum value and its index
+            min_value, min_index = heapq.heappop(pq)
+            # score += min_value
+
+            # # Check if indices 4, 5, and 6 are present
+            # indices_to_check = [min_index - 1, min_index + 1]
+            # values_to_remove = []
+
+            # for value, index in pq:
+            #     if index in indices_to_check:
+            #         values_to_remove.append((value, index))
+
+            # # Remove these elements from the priority queue
+            # pq = [(value, index) for value, index in pq if index not in indices_to_check]
+            # heapq.heapify(pq)  # Rebuild the heap
+
+            # Skip if this index has already been processed
+            if min_index in removed_indices:
                 continue
 
-            # Add current element to the queue
-            q.append(nums[i])
+            # Add the value to the score
+            score += min_value
 
-        # Final processing of remaining elements in the queue
-        skip = False
-        while q:
-            add = q.pop()
-            if not skip:
-                score += add
-            skip = not skip
+            # Mark the current index and neighbors as removed
+            removed_indices.add(min_index)
+            removed_indices.add(min_index - 1)
+            removed_indices.add(min_index + 1)
+
+
+
+
+        # dict = {}
+        # for i, val in enumerate(nums):
+        #     if val in dict:
+        #         dict[val].append(i)
+        #     else:
+        #         dict[val] = [i]
+        # while dict:
+        #      # Prepare indices_to_pop
+        #     indices_to_pop = [] 
+        #     # Find the minimum key
+        #     min_key = min(dict)
+        #     score += min_key
+        #     # Get the 0th element of the list
+        #     index = dict[min_key][0]
+        #     indices_to_pop.append(index)
+        #     indices_to_pop.append(index-1)
+        #     indices_to_pop.append(index+1)
+        #     # Loop through indices and pop them
+        #     for idx in indices_to_pop:
+        #         for key, idxs in dict.items():
+        #             if idx in idxs:
+        #                 idxs.remove(idx)  # Remove the index from the list
+        #                 if not idxs:  # If the list is empty, remove the key
+        #                     del dict[key]
+        #                 break  # Exit the inner loop as index has been popped
+
+
+
+
+        #     if(idx>0 and idx<len(nums)-1):
+        #         nums.pop(idx-1)
+        #         nums.pop(idx-1)
+        #         nums.pop(idx-1)
+        #         continue
+        #     elif ((idx>0 and not idx<len(nums)-1 or (len(nums)==2 and idx>0))):
+        #         nums.pop(idx-1)
+        #         nums.pop(idx-1)
+        #         continue
+        #     elif ((not idx>0 and idx<len(nums)-1) or (len(nums)==2 and idx<len(nums)-1)):
+        #         nums.pop(idx+1)
+        #         nums.pop(idx)
+        #         continue
+        #     if(len(nums)==1):
+        #         nums.pop(idx)
+        #         continue
 
         return score
+
