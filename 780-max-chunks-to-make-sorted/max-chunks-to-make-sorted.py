@@ -3,7 +3,7 @@ class Solution:
         subarray = []
         i, j = 0, 0
         while j < len(arr):
-            # if (i == arr[j] or arr[i] == j ) or len(arr[i:j+1]) == max(arr[i:j+1])+1:
+            # if (i == arr[j] or arr[i] == j ) or len(arr[i:j+1]) == max(arr[i:j+1])+1: this logic was working partially
             if max(arr[i:j+1]) == j:
                 subarray.append(arr[i:j+1])
                 i = j+1
