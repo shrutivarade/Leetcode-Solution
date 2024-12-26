@@ -9,21 +9,61 @@ class Solution:
         if not root:
             return []
         
-        ans = []
+        levels = []
         queue = deque([root])
-        
+
         while queue:
-            current_length = len(queue)
-            curr_max = float("-inf")
-            
-            for _ in range(current_length):
+            size = len(queue)
+            curr_level = []
+
+            while size>0:
                 node = queue.popleft()
-                curr_max = max(curr_max, node.val)
-                if node.left:
+                curr_level.append(node.val)
+
+                if (node.left):
                     queue.append(node.left)
-                if node.right:
+                
+                if(node.right):
                     queue.append(node.right)
-            
-            ans.append(curr_max)
+                
+                size-=1
+            levels.append(max(curr_level))
+
+        return levels
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        # ans = []
+        # queue = deque([root])
         
-        return ans
+        # while queue:
+        #     current_length = len(queue)
+        #     curr_max = float("-inf")
+            
+        #     for _ in range(current_length):
+        #         node = queue.popleft()
+        #         curr_max = max(curr_max, node.val)
+        #         if node.left:
+        #             queue.append(node.left)
+        #         if node.right:
+        #             queue.append(node.right)
+            
+        #     ans.append(curr_max)
+        
+        # return ans
