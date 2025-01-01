@@ -12,8 +12,10 @@ class Solution:
 
                 if abs(target-sum) <  abs(diff):
                     diff = abs(target-sum)
+
+                    # keep track of this sum to return it as result
                     res = sum
-                    
+
                 if sum > target:
                     r-=1
                 else:
