@@ -1,29 +1,32 @@
 class Solution:
     def maxScore(self, s: str) -> int:
+        
+        # using while
+        # start = 0
+        # split = 1
+        # end = len(s)-1
+        # res = 0
+        # while split <= end:
+        #     countl = s[start:split].count('0')
+        #     countr = s[split:end+1].count('1')
+        #     res = max(res, countl + countr)
+        #     split+=1
+        # return res
 
-        start = 0
-        split = 1
-        end = len(s)-1
-        res = 0
-        while split <= end:
-            countl = s[start:split].count('0')
-            countr = s[split:end+1].count('1')
-            res = max(res, countl + countr)
-            split+=1
-        return res
+        # using for
 
-        # n = len(s)
-        # max_score = 0
+        n = len(s)
+        max_score = 0
 
-        # for split in range(1, n):
- 
-        #     left_count = s[:split].count('0')
+        for split in range(1, n):
 
-        #     right_count = s[split:].count('1')
+            left_count = s[:split].count('0')
 
-        #     max_score = max(max_score, left_count + right_count)
+            right_count = s[split:].count('1')
 
-        # return max_score
+            max_score = max(max_score, left_count + right_count)
+
+        return max_score
 
 
         
