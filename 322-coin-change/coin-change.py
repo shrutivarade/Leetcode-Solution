@@ -3,7 +3,6 @@ class Solution:
         
         
         # Recursion
-
         # def min_coins(amount, coins):
         #     if amount == 0:
         #         return 0
@@ -15,12 +14,11 @@ class Solution:
         #                 continue
         #             ans = min(ans, min_coins(subproblem, coins)+1)
         #     return ans
-        
         # return min_coins(amount, coins) if min_coins(amount, coins) != float('inf') else -1
 
         
         
-        # Memoization:
+        # Memoization with hashmap:
         memo = {}
         def min_coins(amount, coins):
 
@@ -71,8 +69,10 @@ class Solution:
         # else:
         #     return count
 
-        # DP Method:
 
+
+
+        # DP Method with array:
         # dp = [amount + 1] * (amount + 1)
         # dp[0] = 0
 
