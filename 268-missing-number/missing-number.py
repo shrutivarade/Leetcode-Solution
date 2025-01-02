@@ -15,9 +15,15 @@ class Solution:
         # return res
 
 
-        for i in range(len(nums)+1):
-            if i not in nums:
-                return i
+        # for i in range(len(nums)+1):
+        #     if i not in nums:
+        #         return i
+
+
+        n = len(nums)
+        actual = sum(nums)
+        expected = (n*(n+1))//2
+        return expected-actual
 
 
 
