@@ -1,41 +1,15 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
 
+        # Dynamic Programming
+        n = len(nums)
+        dp = [0] * n
+        dp[n-1] = nums[n-1]
+        dp[n-2] = nums[n-2]
 
-        dp = [0] * len(nums)
-        dp[len(nums)-1] = nums[len(nums)-1]
-        dp[len(nums)-2] = nums[len(nums)-2]
-
-        for i in range(len(nums)-3, -1, -1):
+        for i in range(n-3, -1, -1):
             dp[i] = nums[i] + max(dp[i+2:])
         return max(dp)
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         
         
