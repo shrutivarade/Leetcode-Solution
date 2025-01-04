@@ -10,14 +10,15 @@ class Solution:
         # return pos[m-1][n-1]
 
         # Permutation and combination.
-        return comb(m+n-2, m-1)
+        # return comb(m+n-2, m-1)
 
         # tabulation:
-        dp = [[1 for i in range(m)] for j in range(n)]
+        dp = [[1 for i in range(n)] for j in range(m)]
         for i in range(1,m):
             for j in range(1,n):
-                dp[i][j] = d[i-1][j] + d[i][j-1]
-        return dp[n-1][m-1]
+                dp[i][j] = dp[i-1][j] + dp[i][j-1]
+
+        return dp[m-1][n-1]
 
 
 
