@@ -5,8 +5,8 @@ class Solution:
 
         for i in range(n):
             for j in range(n):
-                if i != j and words[i] in words[j]:
-                # if i != j and words[j].find(words[i]) != -1:
+                # if i != j and words[i] in words[j]:
+                if i != j and words[j].find(words[i]) != -1:
                     ans.append(words[i])
                     break
 
