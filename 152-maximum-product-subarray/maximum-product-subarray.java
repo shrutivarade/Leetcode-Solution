@@ -8,18 +8,17 @@ class Solution {
 
         // Traverse the array from the second element
         for (int i = 1; i < nums.length; i++) {
-            int num = nums[i];
 
             // Swap currMax and currMin if num is negative
-            if (num < 0) {
+            if (nums[i] < 0) {
                 int temp = currMax;
                 currMax = currMin;
                 currMin = temp;
             }
 
             // Update currMax and currMin
-            currMax = Math.max(num, currMax * num);
-            currMin = Math.min(num, currMin * num);
+            currMax = Math.max(nums[i], currMax * nums[i]);
+            currMin = Math.min(nums[i], currMin * nums[i]);
 
             // Update maxPro to store the maximum product found so far
             maxPro = Math.max(maxPro, currMax);
