@@ -18,6 +18,7 @@ class Solution {
             }
         }
 
+        // Remaining positions in 'nonZeros' are already 0 by default
         return nonZeros;
     }
 }
