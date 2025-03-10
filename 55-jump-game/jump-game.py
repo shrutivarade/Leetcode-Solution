@@ -1,25 +1,16 @@
-# class Solution:
-#     def canJump(self, nums: List[int]) -> bool:
-
-#         i=0
-#         while i<len(nums):
-
-#             if i<len(nums)-1 and nums[i]==0:
-#                 return False
-
-#             i += nums[i]
-#             if(i==nums[len(nums)-1]):
-#                 return True
-        
-
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
-        gas = 0
-        for n in nums:
-            if gas < 0:
-                return False
-            elif n > gas:
-                gas = n
-            gas -= 1
-            
-        return True
+
+        goal = len(nums) - 1
+
+        for i in range(len(nums) - 2, -1, -1):
+            if i + nums[i] >= goal: #can index(curr position) + val(length of your jump) get you to you destination
+                goal = i
+        
+        return True if goal == 0 else False
+        # Move goal from last element to the first element.
+        # [2,3,1,1,4*]
+        # [2,3,1,1*,4]
+        # [2,3,1*,1,4]
+        # [2,3*,1,1,4]
+        # [2*,3,1,1,4]
