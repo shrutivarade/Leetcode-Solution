@@ -16,9 +16,13 @@ class Solution:
         # Optimal: O(n) -> sliding window ( No need to check each subarray. we can just discard the prefix if its sum is negative)
         maxS = nums[0]
         sum = 0
-        for i in nums:
+        for n in nums:
+            sum += n
+            maxS = max(maxS,sum)
             if sum<0:
                 sum = 0
-            sum += i
-            maxS = max(maxS,sum)
         return maxS
+
+
+
+
