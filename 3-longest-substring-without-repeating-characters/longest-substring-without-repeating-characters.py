@@ -12,8 +12,7 @@ class Solution(object):
         while j<len(s):
             if s[j] in s[i:j]:
                 i+=1
-                j=i+1
-                count = 1
+                count -= 1
             else:
                 j=j+1
                 count += 1
