@@ -7,6 +7,21 @@ class Solution:
         nums1[m:]=nums2
         return nums1.sort()
 
+        # i, j = 0, 0
+
+        # while j<n:
+        #     if nums2[j]<nums1[i]:
+        #         nums1[i+1:] = nums1[i:len(nums1)-1]
+        #         nums1[i] = nums2[j]
+        #         i+=1
+        #         j+=1
+        #     else:
+        #         i+=1
+        # # print(nums1[:m+n])
+        # nums1 = nums1[:m+n]
+
+        
+
 
         
 
