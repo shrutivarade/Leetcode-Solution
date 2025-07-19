@@ -3,6 +3,7 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
+        print(nums[len(nums)-k:]+nums[:len(nums)-k])
         # nums  = nums[len(nums)-k:]+nums[:len(nums)-k]
 
         k %= len(nums)
@@ -13,9 +14,10 @@ class Solution:
                 left += 1
                 right -= 1
 
-        reverse(0, len(nums) - 1)
-        reverse(0, k - 1)
-        reverse(k, len(nums) - 1)
+        reverse(0, len(nums) - 1) #reverse all
+        reverse(0, k - 1) # reverse first k
+        reverse(k, len(nums) - 1) # reverse remaining
+        print(nums)
             
         
         
