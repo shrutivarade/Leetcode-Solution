@@ -19,6 +19,3 @@ class Solution:
                 continue
             i+=1
         return len(nums)
-            
-        
-        return len(nums)
