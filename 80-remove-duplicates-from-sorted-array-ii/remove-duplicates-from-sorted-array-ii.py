@@ -20,8 +20,9 @@ class Solution:
             j += 1
             i += 1
 
-        del nums[i:]
-        return len(nums)
+        # del nums[i:]
+        # return len(nums)
+        return i
         
         # extra space for count
         # i=0
