@@ -2,11 +2,11 @@ class Solution:
     def majorityElement(self, nums: List[int]) -> int:
         
         # Simple Hashmap technique
-        n = len(nums)
-        hashmap = Counter(nums)
-        for val, count in hashmap.items():
-            if count > n/2:
-                return val
+        # n = len(nums)
+        # hashmap = Counter(nums)
+        # for val, count in hashmap.items():
+        #     if count > n/2:
+        #         return val
 
         # two pointers for O(1) space;
         nums.sort()
@@ -18,6 +18,8 @@ class Solution:
                     return nums[i]
             else:
                 count = 1
+        
+        return nums[0]
 
 
 
