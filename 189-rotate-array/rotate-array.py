@@ -3,11 +3,11 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        print(nums[len(nums)-k:]+nums[:len(nums)-k])
+        # print(nums[len(nums)-k:]+nums[:len(nums)-k])
         # nums  = nums[len(nums)-k:]+nums[:len(nums)-k]
 
         k %= len(nums)
-
+       
         def reverse(left, right):
             while left < right:
                 nums[left], nums[right] = nums[right], nums[left]
