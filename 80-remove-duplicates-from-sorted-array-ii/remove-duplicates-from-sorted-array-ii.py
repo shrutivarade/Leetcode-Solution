@@ -19,11 +19,9 @@ class Solution:
         # return i
 
         i = 2
-        n = len(nums)
-        while i < n:
+        while i < len(nums):
             if nums[i] == nums[i - 2]:
                 nums.pop(i)
-                n -= 1
             else:
                 i += 1
 
