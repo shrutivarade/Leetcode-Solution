@@ -8,19 +8,19 @@ class Solution:
         j = 1
         count = 1
 
-        while i < len(nums):
-            if nums[i] == nums[i - 1]:
+        while j < len(nums):
+            if nums[j] == nums[j - 1]:
                 count += 1
                 if count > 2:
-                    i += 1
+                    j += 1
                     continue
             else:
                 count = 1
-            nums[j] = nums[i]
+            nums[i] = nums[j]
             j += 1
             i += 1
 
-        del nums[j:]
+        del nums[i:]
         return len(nums)
         
         # extra space for count
