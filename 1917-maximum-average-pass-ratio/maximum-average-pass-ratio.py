@@ -1,53 +1,24 @@
-# class Solution:
-#     def maxAverageRatio(self, classes: List[List[int]], extraStudents: int) -> float:
-        
-
-#         # [.5, .6, 1]
-
-#         # [.5, .3, .8, .2]
-
-#         # [.75, , , ] = 2.05/4 = 0.5125
-#         # [ , .53, , ] = 2.03/4 = 0.5075
-#         # [ , , .88, ] = 1.88/4 = 0.47
-#         # [ , , ,.4] = 2/4 = 0.5
-
-#         # [.5, .45, .8, .33] = 2.083 / 4 = 0.5208
-#         # 0.53485*4 = 2.13
-#         #  / 28+4 = 
-    
-
-
-#         ratio = []
-#         passRatio = []
-#         for c in classes:
-#             ratio.append(c[0]/c[1])
-#         idx = ratio.index(min(ratio))
-#         classes[idx] = [classes[idx][0]+extraStudents, classes[idx][1]+extraStudents]
-#         for c in classes:
-#             passRatio.append(c[0]/c[1])
-#         avg = sum(passRatio) / len(classes)
-#         return avg
-
 class Solution:
     def maxAverageRatio(self, classes: List[List[int]], extraStudents: int) -> float:
-        import heapq
+        # gain(p,t) = (p+1)/(t+1) - p/t, we always add a student to the class with max gain
+        def gain(p: int, t: int) -> float:
+            # compute marginal improvement for adding one pass
+            return (p + 1) / (t + 1) - p / t
 
-        def gain(pass_, total):
-            return (pass_ + 1) / (total + 1) - pass_ / total
+        # max heap by gain, store as negative for heapq
+        heap = []
+        for p, t in classes:
+            heapq.heappush(heap, (-gain(p, t), p, t))  # push current gain and state
 
-        max_heap = []
-        sum_ = 0.0
-
-        for pass_, total in classes:
-            sum_ += pass_ / total
-            heapq.heappush(max_heap, (-gain(pass_, total), pass_, total))
-
+        # assign extra students greedily
         for _ in range(extraStudents):
-            current_gain, pass_, total = heapq.heappop(max_heap)
-            sum_ -= pass_ / total
-            pass_ += 1
-            total += 1
-            sum_ += pass_ / total
-            heapq.heappush(max_heap, (-gain(pass_, total), pass_, total))
+            g, p, t = heapq.heappop(heap)       # get class with largest gain
+            p += 1                               # add guaranteed pass student
+            t += 1
+            heapq.heappush(heap, (-gain(p, t), p, t))  # push updated class
 
-        return sum_ / len(classes)
+        # compute final average
+        total = 0.0
+        for _, p, t in heap:
+            total += p / t
+        return total / len(classes)
